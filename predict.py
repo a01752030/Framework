@@ -1,8 +1,10 @@
 from clean import clean
+import sklearn
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.tree import DecisionTreeClassifier
 import pandas as pd
-
+import graphviz
+import matplotlib
 
 
 df = clean('train.csv')
@@ -19,11 +21,23 @@ x_train_transformada=scaler.transform(x)
 x_test_transformada=scaler.transform(x2)
 
 def DTree():
-    model_t=DecisionTreeClassifier(random_state=10)
+    model_t=DecisionTreeClassifier(random_state=10,criterion="entropy")
+
     model_t.fit(x_train_transformada,y_train)
 
     y_hat_t=model_t.predict(x_test_transformada)
     return y_hat_t
+
+def RForest():
+    model_t = RandomFor
+
+def graficar():
+    model_t = DecisionTreeClassifier(random_state=10,criterion="entropy")
+    model_t.fit(x_train_transformada,y_train)
+    myTreeData = sklearn.tree.export_graphviz(model_t)
+    graphData = graphviz.Source(myTreeData)
+    graphData.render("data.gv")
+    
 
 
 
@@ -38,9 +52,9 @@ def concatenar(ids,emission,name):
 
 
 if __name__=='__main__':
-    DT = DTree()
-    concatenar(dfTest,DT,'DT.csv')
-
+    #DT = DTree()
+    #concatenar(dfTest,DT,'DT.csv')
+    graficar()
 
 
 

@@ -10,7 +10,6 @@ def clean(name):
     mappingbin = {'False': 0, 'True': 1}
     df_train.replace({'CryoSleep': mappingbin, 'VIP': mappingbin}, inplace=True)
     
-    print(df_train)
     return df_train
 
 if __name__ == '__main__':
